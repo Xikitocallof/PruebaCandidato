@@ -1,0 +1,36 @@
+<div>
+  <h1>Customers</h1>
+  <button class="btn-primary m-1" [routerLinkActive]="['link-active']" [routerLink]="['/']">Volver</button>
+</div>
+
+<p *ngIf="!this.verTabla"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="this.verTabla">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>Country</th>
+      <th>Postal Code</th>
+      <th>Phone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of listCustomers | paginate: { itemsPerPage: 20, currentPage: page }">
+      <td>{{ customer.id }}</td>
+      <td>{{ customer.name }}</td>
+      <td>{{ customer.address }}</td>
+      <td>{{ customer.city }}</td>
+      <td>{{ customer.country }}</td>
+      <td>{{ customer.postalCode }}</td>
+      <td>{{ customer.phone }}</td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls *ngIf="this.verTabla"
+                     (pageChange)="page = $event"
+                     previousLabel="Anterior"
+                     nextLabel="Siguiente">
+</pagination-controls>

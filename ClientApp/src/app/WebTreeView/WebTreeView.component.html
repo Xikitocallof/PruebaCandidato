@@ -1,0 +1,14 @@
+<div>
+  <h1 class="col-10">WebTreeView</h1>
+  <button class="btn-primary m-1" [routerLinkActive]="['link-active']" [routerLink]="['/']">Volver</button>
+</div>
+
+<ul *ngFor="let item of listadoItems">
+  <li>{{ item.Name }}</li>
+  <ul *ngFor="let child of item.Children">
+    <li>{{ child.name }}</li>
+    <ul *ngFor="let child2 of child.children_2">
+      <li>{{ child2.name }}</li>
+    </ul>
+  </ul>
+</ul>
